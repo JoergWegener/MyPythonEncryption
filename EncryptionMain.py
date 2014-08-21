@@ -211,7 +211,7 @@ def main():
     global direction
         
     # Command line argument processing (if applicable)
-    if (len(sys.argv) > 0) and not processArgs(sys.argv):
+    if (len(sys.argv) > 1) and not processArgs(sys.argv):
         return # Failure :(
     else:
         # No command line => interactive.
