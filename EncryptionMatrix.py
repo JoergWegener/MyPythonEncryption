@@ -1,12 +1,11 @@
 #
 #
 #
-import MatrixPoint
+from MatrixPoint import MatrixPoint
 
+MATRIXDIM = 6
 
 class EncryptionMatrix:
-    
-    MATRIXDIM = 6
     
     def __init__(self, passphrase):
         # Constructor Logic
@@ -21,14 +20,15 @@ class EncryptionMatrix:
         
     # Return a character in the matrix identified by a Matrixpoint
     def getChar(self, point):
-        return self.encryptionString[point.y * EncryptionMatrix.MATRIXDIM + point.x]
+        global MATRIXDIM
+        return self.encryptionString[point.y * MATRIXDIM + point.x]
     
     
     # Main method of the class
     def convertText(self, inputText, direction):
         outputText = ''
         
-        for i in range(inputText.length() / 2):
+        for i in range(len(inputText) / 2):
             c1 = inputText[i * 2]
             c2 = inputText[(i * 2) + 1]
             
@@ -39,7 +39,7 @@ class EncryptionMatrix:
             
             # If there is an uneven number of chars, the last one is moved
             # down / up one square
-            if ((inputText.length() % 2) == 1):
+            if ((len(inputText) % 2) == 1):
                 c = inputText[inputText.length() - 1]
                 point = self.findPosition(c)
                 newPoint = MatrixPoint(point.x, ( point.y + direction.dirInd + EncryptionMatrix.MATRIXDIM ) % EncryptionMatrix.MATRIXDIM)
@@ -78,8 +78,10 @@ class EncryptionMatrix:
     
     # Helper method determines the MatrixPoint of a char.
     def findPosition (self, c):
+        global MATRIXDIM
+        
         position = self.encryptionString.index(c)
-        return MatrixPoint(count = position, matrixDimension = EncryptionMatrix.MATRIXDIM)
+        return MatrixPoint(x = 0, y = 0, count = position, matrixDimension = MATRIXDIM)
     
     
     # For testing purposes only!

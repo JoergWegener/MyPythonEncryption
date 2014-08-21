@@ -211,8 +211,9 @@ def main():
     global direction
         
     # Command line argument processing (if applicable)
-    if (len(sys.argv) > 1) and not processArgs(sys.argv):
-        return # Failure :(
+    if (len(sys.argv) > 1):
+        if not processArgs(sys.argv):
+            return # Failure :(
     else:
         # No command line => interactive.
         isPassphraseOK = False
@@ -220,12 +221,12 @@ def main():
         # Main process: read a clear text, encrypt it, return it.
 
         while (not isPassphraseOK):
-            passphrase = getPassphrase("")
+            passphrase = getPassphrase('')
             isPassphraseOK = checkPassphrase(passphrase)    
         
-        inputText = getInputtext("")
+        inputText = getInputtext('')
 
-        direction = getDirection("")
+        direction = getDirection('')
         
     # Conversion (encryption or decryption) and printout in one step
     printResultText(convertString(passphrase, inputText, direction), direction)
