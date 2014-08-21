@@ -34,7 +34,7 @@ class EncryptionMatrix:
             
             c1 = inputText[i * 2]
             c2 = inputText[(i * 2) + 1]
-            
+
             point1 = self.findPosition(c1)
             point2 = self.findPosition(c2)
             

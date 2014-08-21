@@ -21,7 +21,7 @@ def checkStringContent (s):
     if (s == ''):
         print('Please enter at least one character or number!\n')
         return False
-    if re.match("^[A-Za-z0-9]*$", s):
+    if re.match("^[A-Za-z0-9 ]*$", s):
         return True
     else:
         print('Please only use characters and numbers. No symbols or Umlauts allowed.\n')
@@ -144,6 +144,7 @@ def getResultText (outputText, direction):
     # Output in chunks of 5 characters separated by space; if not enough left, the rest will be printed.
     # We only print the stuff in chunks of 5 if we print encrypted text.
     # Clear text is displayed in one long string.
+    
     if (direction == CryptoDirection.DECRYPT):
         result = temp
     else:
@@ -153,7 +154,7 @@ def getResultText (outputText, direction):
             
         result += temp 
         
-        return result
+    return result
 
     
   
@@ -227,7 +228,7 @@ def main():
         inputText = getInputtext('')
 
         direction = getDirection('')
-        
+       
     # Conversion (encryption or decryption) and printout in one step
     printResultText(convertString(passphrase, inputText, direction), direction)
 
