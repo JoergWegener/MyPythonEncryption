@@ -2,7 +2,7 @@
 
 class MatrixPoint:
     
-    def __init__(self, x, y, count = 0, matrixDimension = 0):
+    def __init__(self, x = 0, y = 0, count = 0, matrixDimension = 0):
         
         # In Java we have 2 constructors; here we need to enforce
         # the different behaviors with named variables in the
@@ -13,4 +13,8 @@ class MatrixPoint:
         else:
             self.x = count % matrixDimension
             self.y = count / matrixDimension
-        
+
+
+if __name__ == '__main__':
+    # Tests go here
+    pass
