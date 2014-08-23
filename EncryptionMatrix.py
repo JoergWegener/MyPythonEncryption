@@ -21,7 +21,7 @@ class EncryptionMatrix:
     # Return a character in the matrix identified by a Matrixpoint
     def getChar(self, point):
         global MATRIXDIM
-        return self.encryptionString[point.y * MATRIXDIM + point.x]
+        return self.encryptionString[int(point.y * MATRIXDIM + point.x)]
     
     
     # Main method of the class
@@ -30,7 +30,7 @@ class EncryptionMatrix:
         global MATRIXDIM
         outputText = ''
         
-        for i in range(len(inputText) / 2):
+        for i in range(int(len(inputText) / 2)):
             
             c1 = inputText[i * 2]
             c2 = inputText[(i * 2) + 1]

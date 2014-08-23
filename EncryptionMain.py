@@ -4,7 +4,6 @@
 # EncryptionMain
 # This is the main program
 import sys
-#import fileinput
 import re
 
 from CryptoDirection  import CryptoDirection
@@ -37,7 +36,6 @@ def getPassphrase (commandlineText):
     s = ""
         
     if commandlineText == '':
-        #print("Please enter the passphrase:")
         while not isStringOk:
             s = input("Please enter the passphrase:")
             isStringOk = checkStringContent(s)
