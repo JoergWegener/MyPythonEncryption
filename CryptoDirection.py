@@ -1,6 +1,6 @@
 class CryptoDirection:
-    ENCRYPT = 1
-    DECRYPT = -1
+    ENCRYPT = int(1)
+    DECRYPT = int(-1)
 
 
 if __name__ == '__main__':
