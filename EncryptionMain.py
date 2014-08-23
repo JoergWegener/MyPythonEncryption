@@ -43,7 +43,7 @@ def getPassphrase (commandlineText):
         s = commandlineText
      
     # Remove spaces and convert to upper case
-    s.upper()
+    s = s.upper()
     s = s.replace(" ", "")
         
     return s
@@ -220,7 +220,7 @@ def main():
         # Main process: read a clear text, encrypt it, return it.
 
         while (not isPassphraseOK):
-            passphrase = getPassphrase('')
+            passphrase     = getPassphrase('')
             isPassphraseOK = checkPassphrase(passphrase)    
         
         inputText = getInputtext('')
