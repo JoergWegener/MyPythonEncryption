@@ -9,19 +9,20 @@ class EncryptionMatrix:
     
     def __init__(self, passphrase):
         # Constructor Logic
-        charsForMatrixInsertion = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        self.encryptionString = passphrase
+        charsForMatrixInsertion = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+        self.encryptionString = passphrase.upper()
         
+        passphrase = passphrase.upper()
         for c in passphrase:
             # Delete the characters that are already contained in the passphrase
-            charsForMatrixInsertion.replace(c, '')
+            charsForMatrixInsertion = charsForMatrixInsertion.replace(c, '')
         
         self.encryptionString += charsForMatrixInsertion
         
     # Return a character in the matrix identified by a Matrixpoint
     def getChar(self, point):
         global MATRIXDIM
-        return self.encryptionString[int(point.y * MATRIXDIM + point.x)]
+        return self.encryptionString[int(point.y) * int(MATRIXDIM) + int(point.x)]
     
     
     # Main method of the class
@@ -29,6 +30,9 @@ class EncryptionMatrix:
         
         global MATRIXDIM
         outputText = ''
+        
+        #DEBUG
+        self.printMatrix()
         
         for i in range(int(len(inputText) / 2)):
             
@@ -90,8 +94,8 @@ class EncryptionMatrix:
     
     # For testing purposes only!
     def printMatrix (self):
-        for y in range(EncryptionMatrix.MATRIXDIM):
-            print(self.encryptionString.substring(y * MATRIXDIM, y * MATRIXDIM + MATRIXDIM - 1) + "\n")
+        for y in range(MATRIXDIM):
+            print(self.encryptionString[(y * MATRIXDIM): (y * MATRIXDIM + MATRIXDIM )] + "\n")
 
 
 
