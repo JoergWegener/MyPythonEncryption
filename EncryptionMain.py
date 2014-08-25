@@ -55,12 +55,10 @@ def getPassphrase (commandlineText):
 def getDirection(commandlineText):
             
     s = ""
-    c = '' # first character of the string
+    #c = '' # first character of the string
         
-    if (commandlineText == ""):
-            
-            
-        while ((c != 'D') and (c != 'd') and (c != 'E') and (c != 'e')):
+    if (commandlineText == ""):            
+        while ((s[0] != 'D') and (s[0] != 'd') and (s[0] != 'E') and (s[0] != 'e')):
             s = input("Please enter the direction: 'E' for encryption, 'D' for decryption:\n")
 
     else: 
@@ -129,8 +127,8 @@ def convertString (passphrase, inputText, direction):
     
 # Output. Note that this could be changed to provide the output in a GUI.
 def printResultText (outputText, direction):
-        print("Result Text:")
-        print(getResultText(outputText, direction))
+    print("Result Text:")
+    print(getResultText(outputText, direction))
 
     
 # Get the result text.
