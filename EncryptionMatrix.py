@@ -1,14 +1,19 @@
-#
-#
-#
 from MatrixPoint import MatrixPoint
 
 MATRIXDIM = 6
 
 class EncryptionMatrix:
+    """
+    This is the main class that covers all the encryption functionality.
+    It creates a virtual matrix (in reality a string, where we use "line"
+    and "column" to determine the actual position within the string) that
+    is used to encrypt and decrypt strings. The matrix creation depends upon 
+    a passphrase that serves as a "seed" for the matrix creation.
+    """
     
     def __init__(self, passphrase):
-        # Constructor Logic
+        """ Constructor Logic """
+        passphrase = passphrase.upper()
         charsForMatrixInsertion = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
         self.encryptionString = passphrase
         
@@ -18,16 +23,14 @@ class EncryptionMatrix:
         
         self.encryptionString += charsForMatrixInsertion
         
-    # Return a character in the matrix identified by a Matrixpoint
+        
     def getChar(self, point):
-        global MATRIXDIM
+        """ Return a character in the matrix identified by a Matrixpoint"""
         return self.encryptionString[int(point.y) * int(MATRIXDIM) + int(point.x)]
     
     
-    # Main method of the class
     def convertText(self, inputText, direction):
-        
-        global MATRIXDIM
+        """Main method of the class"""
         outputText = ''
         
         for i in range(int(len(inputText) / 2)):
@@ -51,10 +54,10 @@ class EncryptionMatrix:
         return outputText
             
         
-    # Helper method that returns a string of 2 chars for the clear chars provided.
-    # This result has to be added to the encrypted / decrypted string.
     def createTargetCharPair (self, point1, point2, direction):
-        global MATRIXDIM
+        """ Helper method that returns a string of 2 chars for the clear chars provided.
+        This result has to be added to the encrypted / decrypted string."""
+        
         result = '' #This will contain the new string
         # Determine the relative position of the 2 characters
         if ((point1.x != point2.x) and (point1.y != point2.y)):
@@ -80,15 +83,14 @@ class EncryptionMatrix:
         return result
     
     
-    # Helper method determines the MatrixPoint of a char.
     def findPosition (self, c):
-        
+        """Helper method determines the MatrixPoint of a char."""
         position = self.encryptionString.index(c)
         return MatrixPoint(x = 0, y = 0, count = position, matrixDimension = MATRIXDIM)
     
     
-    # For testing purposes only!
     def printMatrix (self):
+        """For testing purposes only!"""
         for y in range(MATRIXDIM):
             print(self.encryptionString[(y * MATRIXDIM): (y * MATRIXDIM + MATRIXDIM )] )
 
