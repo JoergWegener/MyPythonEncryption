@@ -82,7 +82,6 @@ class EncryptionMatrix:
     
     # Helper method determines the MatrixPoint of a char.
     def findPosition (self, c):
-        global MATRIXDIM
         
         position = self.encryptionString.index(c)
         return MatrixPoint(x = 0, y = 0, count = position, matrixDimension = MATRIXDIM)
