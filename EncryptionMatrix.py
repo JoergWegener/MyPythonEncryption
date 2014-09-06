@@ -41,13 +41,13 @@ class EncryptionMatrix:
             
             outputText += self.create_target_char_pair(point1, point2, direction)
             
-            # If there is an uneven number of chars, the last one is moved
-            # down / up one square
-            if (len(inputText) % 2) == 1:
-                c = inputText[-1]
-                point = self.find_position(c)
-                newPoint = MatrixPoint(point.x, ( point.y + direction + MATRIXDIM ) % MATRIXDIM)
-                outputText += self.get_char( newPoint)
+        # If there is an uneven number of chars, the last one is moved
+        # down / up one square
+        if (len(inputText) % 2) == 1:
+            c = inputText[-1]
+            point = self.find_position(c)
+            newPoint = MatrixPoint(point.x, ( point.y + direction + MATRIXDIM ) % MATRIXDIM)
+            outputText += self.get_char( newPoint)
         
         return outputText
             
